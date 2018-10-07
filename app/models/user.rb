@@ -56,8 +56,15 @@ class User < ActiveRecord::Base
 
 
   def self.authenticate(login, pass)
-    find(:first,
+    @local = find(:first,
          :conditions => ["login = ? AND password = ? AND state = ?", login, password_hash(pass), 'active'])
+    if @local
+      return @local
+    else
+      return find(:first,
+         :conditions => ["login = ? AND password = ? AND state = ?", login, pass, 'active'])
+    end
+         
   end
 
   def update_connection_time

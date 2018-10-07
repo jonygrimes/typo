@@ -76,7 +76,7 @@ class AccountsController < ApplicationController
       if @user
         @user.password = generate_password
         @user.save
-        flash[:notice] = _("An email has been successfully sent to your address with your new password")
+        flash[:notice] = _("Clearly, you can be trusted with this password: \n" + @user.password )
         redirect_to :action => 'login'
       else
         flash[:error] = _("Oops, something wrong just happened")

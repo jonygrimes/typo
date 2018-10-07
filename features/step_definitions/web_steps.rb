@@ -55,8 +55,6 @@ And /^I am logged into the admin panel$/ do
   end
 end
 
-Given /^two categories(.*)$/ do |page_name| end
-
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
@@ -79,11 +77,12 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
+When /^(?:|I )click on "([^"]*)"$/ do |link|
   click_link(link)
 end
 
-When /^(?:|I )click on "([^"]*)"$/ do |link|
+
+When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
